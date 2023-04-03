@@ -83,10 +83,13 @@ Build dependencies
   * Installed with very large dependencies (including gtk3)
 * [ ] jack.h : audio/jack
   * Haiku Depot: N/A
+  * Used by: cubeb
 * [ ] pulseaudio.h : audio/pulseaudio
   * Haiku Depot: N/A
+  * Used by: libwebrtc, cubeb
 * [ ] sndio.h : audio/sndio
   * Haiku Depot: N/A
+  * Used by: cubeb
 * [x] gmake>=4.3 : devel/gmake
   * Haiku Depot: 4.1-5 make
   * Older than requirement version, may require packaging newer version, but try using this.
