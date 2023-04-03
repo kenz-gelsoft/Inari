@@ -53,6 +53,7 @@ Build dependencies
   * Haiku Depot: apsw may be a replacement. But may require build or package ourself.
 * [ ] v4l_compat>0 : multimedia/v4l_compat
   * Haiku Depot: N/A
+  * Used by: libyuv, mozva
 * [x] autoconf2.13 : devel/autoconf2.13
   * Haiku Depot: 2.13-3 autoconf213
 * [x] nasm : devel/nasm
