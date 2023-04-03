@@ -6,13 +6,13 @@ This project is my experiment to build Firefox web browser on Haiku OS.
 
 Official Build Instruction pulls the (partially-) pre built binaries to build the browser.
 
-But, there is such a pre-built binaries to use, because Haiku has not been a supported build environment yet.
+But, there is no such a pre-built binaries to use, because Haiku has not been a supported build environment yet.
 
-We should follow build process of a tier-3 build target, here I'll look in FreeSBD's one.
+We should follow the build process one of the tier-3 build targets, here I'll look in the FreeBSD's one.
 
 ## Checking prerequisites
 
-Currently, FreeBSD port targets the 112.0 version of firefox.
+Currently, the FreeBSD port targets the 112.0 version of Firefox.
 
 But we'll target the current ESR version(111.0.1) (or older releases) if there is only old ports of prerequisites.
 
