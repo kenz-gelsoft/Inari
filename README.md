@@ -82,9 +82,14 @@ Build dependencies
   * Haiku Depot: 0.8.1-2 libnotify, libnotify_devel
   * Installed with very large dependencies (including gtk3)
 * [ ] jack.h : audio/jack
+  * Haiku Depot: N/A
 * [ ] pulseaudio.h : audio/pulseaudio
+  * Haiku Depot: N/A
 * [ ] sndio.h : audio/sndio
-* [ ] gmake>=4.3 : devel/gmake
+  * Haiku Depot: N/A
+* [x] gmake>=4.3 : devel/gmake
+  * Haiku Depot: 4.1-5 make
+  * Older than requirement version, may require packaging newer version, but try using this.
 * [ ] pkgconf>=1.3.0_1 : devel/pkgconf
 * [ ] python3.9 : lang/python39
 * [ ] update-desktop-database : devel/desktop-file-utils
