@@ -15,8 +15,8 @@ We should follow the build process one of the tier-3 build targets, here I'll lo
 * 1. System preparation
 * 1.1 Install Python
 * 1.2 Install Mercurial
-  * Installed, but not used.
-  * Retrieved tar.xz
+   * Installed, but not used.
+   * Retrieved tar.xz
 * 2. Bootstrap a copy of the Firefox source code
 
 ## Checking prerequisites
