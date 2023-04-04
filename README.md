@@ -114,6 +114,8 @@ Runtime dependencies:
 
 * [ ] libpci.so : devel/libpci
 * [ ] ffmpeg>=0.8,1 : multimedia/ffmpeg
+  * Haiku Depot: 4.2.7 ffmpeg
+  * Haiku Depot: 5.1 ffmpeg5
 * [ ] update-desktop-database : devel/desktop-file-utils
 * [ ] x11.pc : x11/libX11
 * [ ] xcb.pc : x11/libxcb
