@@ -62,12 +62,13 @@ Build dependencies
   * Haiku Depot: 1.3.0-5 yasm
 * [x] zip : archivers/zip
   * Haiku Depot: 3.0-4 zip
-* [ ] libc++abi.a : devel/wasi-libcxx
-  * Haiku Depot: wasi N/A
-* [ ] libc.a : devel/wasi-libc
-  * Haiku Depot: wasi N/A
-* [ ] libclang_rt.builtins-wasm32.a : devel/wasi-compiler-rt13
-  * Haiku Depot: wasi N/A
+* wasm deps
+  * [ ] libc++abi.a : devel/wasi-libcxx
+    * Haiku Depot: wasi N/A
+  * [ ] libc.a : devel/wasi-libc
+    * Haiku Depot: wasi N/A
+  * [ ] libclang_rt.builtins-wasm32.a : devel/wasi-compiler-rt13
+    * Haiku Depot: wasi N/A
 * [ ] llvm13>0 : devel/llvm13
   * Haiku Depot: 12.0.1-5 llvm12 
   * Older than requirement version 13, may require packaging newer version, but try using this.
@@ -82,15 +83,16 @@ Build dependencies
 * [x] libnotify>0 : devel/libnotify
   * Haiku Depot: 0.8.1-2 libnotify, libnotify_devel
   * Installed with very large dependencies (including gtk3)
-* [ ] jack.h : audio/jack
-  * Haiku Depot: N/A
-  * Used by: cubeb
-* [ ] pulseaudio.h : audio/pulseaudio
-  * Haiku Depot: N/A
-  * Used by: libwebrtc, cubeb
-* [ ] sndio.h : audio/sndio
-  * Haiku Depot: N/A
-  * Used by: cubeb
+* cubeb(used for webrtc) deps
+  * [ ] jack.h : audio/jack
+    * Haiku Depot: N/A
+    * Used by: cubeb
+  * [ ] pulseaudio.h : audio/pulseaudio
+    * Haiku Depot: N/A
+    * Used by: libwebrtc, cubeb
+  * [ ] sndio.h : audio/sndio
+    * Haiku Depot: N/A
+    * Used by: cubeb
 * [x] gmake>=4.3 : devel/gmake
   * Haiku Depot: 4.1-5 make
   * Older than requirement version, may require packaging newer version, but try using this.
@@ -99,17 +101,18 @@ Build dependencies
 * [ ] python3.9 : lang/python39
   * Haiku Depot: 3.9.16 python3.9
 * [ ] update-desktop-database : devel/desktop-file-utils
-* [ ] xorgproto>=0 : x11/xorgproto
-* [ ] x11.pc : x11/libX11
-* [ ] xcb.pc : x11/libxcb
-* [ ] xcomposite.pc : x11/libXcomposite
-* [ ] xdamage.pc : x11/libXdamage
-* [ ] xext.pc : x11/libXext
-* [ ] xfixes.pc : x11/libXfixes
-* [ ] xrandr.pc : x11/libXrandr
-* [ ] xrender.pc : x11/libXrender
-* [ ] xt.pc : x11-toolkits/libXt
-* [ ] xtst.pc : x11/libXtst
+* x11 deps
+  * [ ] xorgproto>=0 : x11/xorgproto
+  * [ ] x11.pc : x11/libX11
+  * [ ] xcb.pc : x11/libxcb
+  * [ ] xcomposite.pc : x11/libXcomposite
+  * [ ] xdamage.pc : x11/libXdamage
+  * [ ] xext.pc : x11/libXext
+  * [ ] xfixes.pc : x11/libXfixes
+  * [ ] xrandr.pc : x11/libXrandr
+  * [ ] xrender.pc : x11/libXrender
+  * [ ] xt.pc : x11-toolkits/libXt
+  * [ ] xtst.pc : x11/libXtst
 * [ ] perl5>=5.32.r0<5.33 : lang/perl5.32
   * Haiku Depot: 5.32.1 perl
 
@@ -120,16 +123,17 @@ Runtime dependencies:
   * Haiku Depot: 4.2.7 ffmpeg
   * Haiku Depot: 5.1 ffmpeg5
 * [ ] update-desktop-database : devel/desktop-file-utils
-* [ ] x11.pc : x11/libX11
-* [ ] xcb.pc : x11/libxcb
-* [ ] xcomposite.pc : x11/libXcomposite
-* [ ] xdamage.pc : x11/libXdamage
-* [ ] xext.pc : x11/libXext
-* [ ] xfixes.pc : x11/libXfixes
-* [ ] xrandr.pc : x11/libXrandr
-* [ ] xrender.pc : x11/libXrender
-* [ ] xt.pc : x11-toolkits/libXt
-* [ ] xtst.pc : x11/libXtst
+* x11 deps
+  * [ ] x11.pc : x11/libX11
+  * [ ] xcb.pc : x11/libxcb
+  * [ ] xcomposite.pc : x11/libXcomposite
+  * [ ] xdamage.pc : x11/libXdamage
+  * [ ] xext.pc : x11/libXext
+  * [ ] xfixes.pc : x11/libXfixes
+  * [ ] xrandr.pc : x11/libXrandr
+  * [ ] xrender.pc : x11/libXrender
+  * [ ] xt.pc : x11-toolkits/libXt
+  * [ ] xtst.pc : x11/libXtst
 
 Library dependencies:
 
