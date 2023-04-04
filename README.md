@@ -111,6 +111,7 @@ Build dependencies
 * [ ] xt.pc : x11-toolkits/libXt
 * [ ] xtst.pc : x11/libXtst
 * [ ] perl5>=5.32.r0<5.33 : lang/perl5.32
+  * Haiku Depot: 5.32.1 perl
 
 Runtime dependencies:
 
