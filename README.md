@@ -138,6 +138,7 @@ Runtime dependencies:
 Library dependencies:
 
 * [ ] libdrm.so : graphics/libdrm
+  * N/A https://github.com/haikuports/haikuports/issues/4745
 * [ ] libepoll-shim.so : devel/libepoll-shim
 * [ ] libfontconfig.so : x11-fonts/fontconfig
 * [ ] libfreetype.so : print/freetype2
