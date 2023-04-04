@@ -95,7 +95,9 @@ Build dependencies
   * Haiku Depot: 4.1-5 make
   * Older than requirement version, may require packaging newer version, but try using this.
 * [ ] pkgconf>=1.3.0_1 : devel/pkgconf
+  * Haiku Depot: 1.5.3 pkgconf
 * [ ] python3.9 : lang/python39
+  * Haiku Depot: 3.9.16 python3.9
 * [ ] update-desktop-database : devel/desktop-file-utils
 * [ ] xorgproto>=0 : x11/xorgproto
 * [ ] x11.pc : x11/libX11
