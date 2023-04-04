@@ -14,7 +14,7 @@ We should follow the build process one of the tier-3 build targets, here I'll lo
 
 Currently, the FreeBSD port targets the 112.0 version of Firefox.
 
-But we'll target the current ESR version(111.0.1) (or older releases) if there is only old ports of prerequisites.
+But we'll target the current ESR version(102.9) (or older releases) if there is only old ports of prerequisites.
 
 ### 112.0 prerequisites
 
