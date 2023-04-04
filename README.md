@@ -10,6 +10,15 @@ But, there is no such a pre-built binaries to use, because Haiku has not been a 
 
 We should follow the build process one of the tier-3 build targets, here I'll look in the FreeBSD's one.
 
+## Steps followed
+
+* 1. System preparation
+* 1.1 Install Python
+* 1.2 Install Mercurial
+  * Installed, but not used.
+  * Retrieved tar.xz
+* 2. Bootstrap a copy of the Firefox source code
+
 ## Checking prerequisites
 
 Currently, the FreeBSD port targets the 112.0 version of Firefox.
