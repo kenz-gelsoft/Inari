@@ -194,6 +194,33 @@ Library dependencies:
 * [x] libjpeg.so : graphics/jpeg-turbo
   * Haiku Depot: 2.1.4-2 libjpeg_turbo, libjpeg_turbo_devel
 
+## ESR
+
+```diff
+~/src/kitsune-be> diff -u rel.txt esr.txt 
+--- rel.txt     2023-04-05 06:15:35.298844160 +0900
++++ esr.txt     2023-04-05 06:15:02.116129792 +0900
+@@ -1,13 +1,13 @@
+ Build dependencies:
+ nspr>=4.32 : devel/nspr
+-nss>=3.89 : security/nss
+-icu>=72.1 : devel/icu
++nss>=3.79.1 : security/nss
++icu>=71.1,1 : devel/icu
+ libevent>=2.1.8 : devel/libevent
+-harfbuzz>=7.1.0 : print/harfbuzz
++harfbuzz>=4.1.0 : print/harfbuzz
+ graphite2>=1.3.14 : graphics/graphite2
+-png>=1.6.39 : graphics/png
++png>=1.6.37 : graphics/png
+ dav1d>=1.0.0 : multimedia/dav1d
+-libvpx>=1.13.0 : multimedia/libvpx
++libvpx>=1.11.0 : multimedia/libvpx
+ py39-sqlite3>0 : databases/py-sqlite3@py39
+ v4l_compat>0 : multimedia/v4l_compat
+ autoconf2.13 : devel/autoconf2.13
+```
+
 ## References
 
 * Official Linux Build Instruction
