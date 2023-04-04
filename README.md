@@ -96,9 +96,9 @@ Build dependencies
 * [x] gmake>=4.3 : devel/gmake
   * Haiku Depot: 4.1-5 make
   * Older than requirement version, may require packaging newer version, but try using this.
-* [ ] pkgconf>=1.3.0_1 : devel/pkgconf
-  * Haiku Depot: 1.5.3 pkgconf
-* [ ] python3.9 : lang/python39
+* [x] pkgconf>=1.3.0_1 : devel/pkgconf
+  * Haiku Depot: 1.5.3-1 pkgconf, pkgconf_devel
+* [x] python3.9 : lang/python39
   * Haiku Depot: 3.9.16 python3.9
 * [ ] update-desktop-database : devel/desktop-file-utils
 * x11 deps
@@ -113,15 +113,16 @@ Build dependencies
   * [ ] xrender.pc : x11/libXrender
   * [ ] xt.pc : x11-toolkits/libXt
   * [ ] xtst.pc : x11/libXtst
-* [ ] perl5>=5.32.r0<5.33 : lang/perl5.32
+* [x] perl5>=5.32.r0<5.33 : lang/perl5.32
   * Haiku Depot: 5.32.1 perl
 
 Runtime dependencies:
 
-* [ ] libpci.so : devel/libpci
-* [ ] ffmpeg>=0.8,1 : multimedia/ffmpeg
-  * Haiku Depot: 4.2.7 ffmpeg
-  * Haiku Depot: 5.1 ffmpeg5
+* [x] libpci.so : devel/libpci
+  * Haiku Depot: 3.6.2-1 pciutils, pciutils_devel
+* [x] ffmpeg>=0.8,1 : multimedia/ffmpe
+  * Haiku Depot: 4.2.7 ffmpeg, ffmpeg_devel
+  * Haiku Depot: 5.1 ffmpeg5, ffmpeg5_devel
 * [ ] update-desktop-database : devel/desktop-file-utils
 * x11 deps
   * [ ] x11.pc : x11/libX11
@@ -142,34 +143,56 @@ Library dependencies:
 * [ ] libepoll-shim.so : devel/libepoll-shim
   * N/A
   * epoll like API not available yet https://discuss.haiku-os.org/t/kqueue-vs-epoll/10820
-* [ ] libfontconfig.so : x11-fonts/fontconfig
-  * Haiku Depot: 2.13.96 fontconfig
-* [ ] libfreetype.so : print/freetype2
-  * Haiku Depot: 2.10.4 freetype
+* [x] libfontconfig.so : x11-fonts/fontconfig
+  * Haiku Depot: 2.13.96-2 fontconfig, fontconfig_devel
+* [x] libfreetype.so : print/freetype2
+  * Haiku Depot: 2.12.1-3 freetype, freetype_devel
 * [ ] libaom.so : multimedia/aom
-* [ ] libdav1d.so : multimedia/dav1d
-* [ ] libevent.so : devel/libevent
-* [ ] libffi.so : devel/libffi
-* [ ] libgraphite2.so : graphics/graphite2
-* [ ] libharfbuzz.so : print/harfbuzz
-* [ ] libicui18n.so : devel/icu
-* [ ] libnspr4.so : devel/nspr
-* [ ] libnss3.so : security/nss
-* [ ] libpng.so : graphics/png
-* [ ] libpixman-1.so : x11/pixman
-* [ ] libvpx.so : multimedia/libvpx
-* [ ] libwebp.so : graphics/webp
-* [ ] libdbus-1.so : devel/dbus
-* [ ] libdbus-glib-1.so : devel/dbus-glib
+* [x] libdav1d.so : multimedia/dav1d
+  * Haiku Depot: 1.0.0-1 dav1d, dav1d_devel
+* [x] libevent.so : devel/libevent
+  * Haiku Depot: 2.1.12-2 libeevent, libevent_devel
+* [x] libffi.so : devel/libffi
+  * Haiku Depot: 3.4.2-2 libffi, libffi_devel
+* [x] libgraphite2.so : graphics/graphite2
+  * Haiku Depot: 1.3.14-2 graphite2, graphite2_devel
+* [x] libharfbuzz.so : print/harfbuzz
+  * Haiku Depot: 4.0.0-3 harfbuzz, harfbuzz_devel
+* [x] libicui18n.so : devel/icu
+  * Haiku Depot: 66.1-3, icu66, icu66_devel
+* [x] libnspr4.so : devel/nspr
+  * Haiku Depot: 4.34.1-3, nspr, nspr_devel
+* [x] libnss3.so : security/nss
+  * Haiku Depot: 3.73.1-1, nss, nss_devel
+* [x] libpng.so : graphics/png
+  * Haiku Depot: 1.6.38-2 libpng16, libpng16_devel
+* [x] libpixman-1.so : x11/pixman
+  * Haiku Depot: 0.38.4-2 pixman, pixman_devel
+* [x] libvpx.so : multimedia/libvpx
+  * Haiku Depot: 1.11.0-3 libvpx, libvpx_devel
+* [x] libwebp.so : graphics/webp
+  * Haiku Depot: 1.2.4-2 libwebp, libwebp_devel
+* [x] libdbus-1.so : devel/dbus
+  * Haiku Depot: 1.12.20-5 dbus, dbus_devel
+* [x] libdbus-glib-1.so : devel/dbus-glib
+  * Haiku Depot: 0.110-2 dbus_glib, dbus_glib_devel
 * [ ] libGL.so : graphics/libglvnd
-* [ ] libatk-1.0.so : accessibility/at-spi2-core
-* [ ] libcairo.so : graphics/cairo
-* [ ] libgdk_pixbuf-2.0.so : graphics/gdk-pixbuf2
-* [ ] libglib-2.0.so : devel/glib20
-* [ ] libintl.so : devel/gettext-runtime
-* [ ] libgtk-3.so : x11-toolkits/gtk30
-* [ ] libpango-1.0.so : x11-toolkits/pango
-* [ ] libjpeg.so : graphics/jpeg-turbo
+* [x] libatk-1.0.so : accessibility/at-spi2-core
+  * Haiku Depot: 2.38.0-2 atk, atk_devel
+* [x] libcairo.so : graphics/cairo
+  * Haiku Depot: 1.16.0-5 cairo, cairo_devel
+* [x] libgdk_pixbuf-2.0.so : graphics/gdk-pixbuf2
+  * Haiku Depot: 2.42.9-4 gdk_pixbuf, gdk_pixbuf_devel
+* [x] libglib-2.0.so : devel/glib20
+  * Haiku Depot: 2.75.1-1 lib2, glib2_devel
+* [x] libintl.so : devel/gettext-runtime
+  * Haiku Depot: 0.21.1-3 gettext_libintl
+* [x] libgtk-3.so : x11-toolkits/gtk30
+  * Haiku Depot: 3.24.36-1 gtk3, gtk3_devel
+* [x] libpango-1.0.so : x11-toolkits/pango
+  * Haiku Depot: 1.50.7-2 pango, pango_devel
+* [x] libjpeg.so : graphics/jpeg-turbo
+  * Haiku Depot: 2.1.4-2 libjpeg_turbo, libjpeg_turbo_devel
 
 ## References
 
