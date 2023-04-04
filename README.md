@@ -227,3 +227,4 @@ Library dependencies:
   * https://firefox-source-docs.mozilla.org/setup/linux_build.html
 * FreeBSD ports
   * https://www.freshports.org/www/firefox/
+  * https://www.freshports.org/www/firefox-esr/
