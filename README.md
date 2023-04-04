@@ -143,7 +143,9 @@ Library dependencies:
   * N/A
   * epoll like API not available yet https://discuss.haiku-os.org/t/kqueue-vs-epoll/10820
 * [ ] libfontconfig.so : x11-fonts/fontconfig
+  * Haiku Depot: 2.13.96 fontconfig
 * [ ] libfreetype.so : print/freetype2
+  * Haiku Depot: 2.10.4 freetype
 * [ ] libaom.so : multimedia/aom
 * [ ] libdav1d.so : multimedia/dav1d
 * [ ] libevent.so : devel/libevent
