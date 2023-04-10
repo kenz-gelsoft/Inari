@@ -102,6 +102,8 @@ Build dependencies
   * [ ] sndio.h : audio/sndio
     * Haiku Depot: N/A
     * Used by: cubeb
+  * Haiku has OSS ported
+    * https://github.com/haikuports/haikuports/blob/4f180bdb94db9749ae800820b271e262a12754aa/media-sound/opensound/opensound-4.2.recipe
 * [x] gmake>=4.3 : devel/gmake
   * Haiku Depot: 4.1-5 make
   * Older than requirement version, may require packaging newer version, but try using this.
