@@ -82,8 +82,10 @@ Build dependencies
   * Haiku Depot: 12.0.1-5 llvm12 
   * Older than requirement version 13, may require packaging newer version, but try using this.
 * [ ] rust-cbindgen>=0.24.3 : devel/rust-cbindgen
-  * Haiku Depot: 0.20.0-1 cbindgen
-  * Older than requirement version 0.24.3, may require packaging newer version, but try using this.
+  * Install manually from cargo.
+  * ~~Haiku Depot: 0.20.0-1 cbindgen~~
+    * Older than requirement version 0.24.3, may require packaging newer version, but try using this.
+    * can't be used. see https://github.com/kenz-gelsoft/Inari/issues/4#issuecomment-1518439778
 * [ ] rust>=1.68.0 : lang/rust
   * Haiku Depot: 1.67.0-1 rust-bin
   * Older than requirement version 1.68.0, may require packaging newer version, but try using this.
