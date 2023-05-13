@@ -1,0 +1,25 @@
+From a84eee72d39758aa16859150dc461ae07810a951 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 03:39:40 +0900
+Subject: [PATCH 04/11] Teach build system how to find libclang on Haiku
+
+---
+ build/moz.configure/bindgen.configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/build/moz.configure/bindgen.configure b/build/moz.configure/bindgen.configure
+index 2194e732d5f6..e22ad13281b8 100644
+--- a/build/moz.configure/bindgen.configure
++++ b/build/moz.configure/bindgen.configure
+@@ -205,7 +205,7 @@ def bindgen_libclang_path(libclang_path, clang, library_name_info, host):
+     libclang_choices.append(
+         "%sclang%s" % (library_name_info.dll.prefix, library_name_info.dll.suffix)
+     )
+-    if host.kernel == "Linux":
++    if host.kernel == "Linux" or host.kernel == "Haiku":
+         libclang_choices.append("libclang.so.*")
+ 
+     if host.os == "OpenBSD":
+-- 
+2.37.3
+

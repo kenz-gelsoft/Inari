@@ -1,0 +1,23 @@
+From 93884b3378f1d319c5102fd3e7438fc462ffff88 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 03:55:09 +0900
+Subject: [PATCH 06/11] Let configure succeed on Haiku
+
+- Disable WASI
+- Use system NSPR
+  - Using system NSS is not required for this (may be required later to fix build)
+---
+ haiku_mozconfig | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/haiku_mozconfig b/haiku_mozconfig
+index 4648dfe6bfdc..9e6204518bfb 100644
+--- a/haiku_mozconfig
++++ b/haiku_mozconfig
+@@ -1 +1,3 @@
+ ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
++ac_add_options --with-system-nspr
++ac_add_options --without-wasm-sandboxed-libraries
+-- 
+2.37.3
+

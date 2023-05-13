@@ -1,0 +1,25 @@
+From a4ecd461766d6b8da51fc1b542343d07ad9bf0c2 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 03:33:28 +0900
+Subject: [PATCH 03/11] Use OSS for audio backend
+
+---
+ toolkit/moz.configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index 33048062893e..71373bc39ab7 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -192,7 +192,7 @@ def audio_backends_default(target):
+             "aaudio",
+             "opensl",
+         )
+-    elif target.os in ("DragonFly", "FreeBSD", "SunOS"):
++    elif target.os in ("DragonFly", "FreeBSD", "Haiku", "SunOS"):
+         return ("oss",)
+     elif target.os == "OpenBSD":
+         return ("sndio",)
+-- 
+2.37.3
+

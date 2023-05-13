@@ -1,0 +1,156 @@
+From 3f91c3acc98871bea9ca3d026f520d388fd6130a Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 03:20:24 +0900
+Subject: [PATCH 02/11] Teach Haiku OS build system to ./mach bootstrap succeed
+
+---
+ build/moz.configure/init.configure            |  2 +
+ python/mozboot/mozboot/bootstrap.py           |  5 ++
+ python/mozboot/mozboot/haiku.py               | 56 +++++++++++++++++++
+ .../mozbuild/mozbuild/configure/constants.py  |  3 +
+ testing/mozbase/mozinfo/mozinfo/mozinfo.py    |  2 +-
+ 5 files changed, 67 insertions(+), 1 deletion(-)
+ create mode 100644 python/mozboot/mozboot/haiku.py
+
+diff --git a/build/moz.configure/init.configure b/build/moz.configure/init.configure
+index 81f500a0b752..8079ef28f05c 100644
+--- a/build/moz.configure/init.configure
++++ b/build/moz.configure/init.configure
+@@ -469,6 +469,8 @@ def split_triplet(triplet, allow_msvc=False, allow_wasi=False):
+         canonical_os = canonical_kernel = "DragonFly"
+     elif os.startswith("freebsd"):
+         canonical_os = canonical_kernel = "FreeBSD"
++    elif os.startswith("haiku"):
++        canonical_os = canonical_kernel = "Haiku"
+     elif os.startswith("netbsd"):
+         canonical_os = canonical_kernel = "NetBSD"
+     elif os.startswith("openbsd"):
+diff --git a/python/mozboot/mozboot/bootstrap.py b/python/mozboot/mozboot/bootstrap.py
+index 7f8b7f7d2087..486317c0c307 100644
+--- a/python/mozboot/mozboot/bootstrap.py
++++ b/python/mozboot/mozboot/bootstrap.py
+@@ -30,6 +30,7 @@ from mozboot.opensuse import OpenSUSEBootstrapper
+ from mozboot.debian import DebianBootstrapper
+ from mozboot.freebsd import FreeBSDBootstrapper
+ from mozboot.gentoo import GentooBootstrapper
++from mozboot.haiku import HaikuBootstrapper
+ from mozboot.osx import OSXBootstrapper, OSXBootstrapperLight
+ from mozboot.openbsd import OpenBSDBootstrapper
+ from mozboot.archlinux import ArchlinuxBootstrapper
+@@ -215,6 +216,10 @@ class Bootstrapper(object):
+             args["version"] = platform.release()
+             args["flavor"] = platform.system()
+ 
++        elif sys.platform.startswith("haiku"):
++            cls = HaikuBootstrapper
++            args["version"] = platform.uname()[2]
++
+         elif sys.platform.startswith("win32") or sys.platform.startswith("msys"):
+             if "MOZILLABUILD" in os.environ:
+                 cls = MozillaBuildBootstrapper
+diff --git a/python/mozboot/mozboot/haiku.py b/python/mozboot/mozboot/haiku.py
+new file mode 100644
+index 000000000000..100cf43a2c22
+--- /dev/null
++++ b/python/mozboot/mozboot/haiku.py
+@@ -0,0 +1,56 @@
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this file,
++# You can obtain one at http://mozilla.org/MPL/2.0/.
++
++from mozboot.base import BaseBootstrapper
++
++
++class HaikuBootstrapper(BaseBootstrapper):
++    def __init__(self, version, **kwargs):
++        BaseBootstrapper.__init__(self, **kwargs)
++
++        self.packages = [
++            "make",
++            "pkgconf",
++            "rust_bin",
++        ]
++
++        self.browser_packages = [
++            "dbus_glib_devel",
++            "gtk3_devel",
++            "llvm12",
++            "nasm",
++            "nodejs16",
++        ]
++
++    def pkgman_install(self, *packages):
++        command = ["pkgman", "install"]
++        if self.no_interactive:
++            command.append("-y")
++
++        command.extend(packages)
++        self.run_as_root(command)
++
++    def install_system_packages(self):
++        self.pkgman_install(*self.packages)
++
++    def install_browser_packages(self, mozconfig_builder, artifact_mode=False):
++        self.pkgman_install(*self.browser_packages)
++
++    def install_browser_artifact_mode_packages(self, mozconfig_builder):
++        self.install_browser_packages(mozconfig_builder, artifact_mode=True)
++
++    def ensure_clang_static_analysis_package(self):
++        # TODO: we don't ship clang base static analysis for this platform
++        pass
++
++    def ensure_stylo_packages(self):
++        # Clang / llvm already installed as browser package
++        self.pkgman_install("cbindgen")
++
++    def ensure_nasm_packages(self):
++        # installed via install_browser_packages
++        pass
++
++    def ensure_node_packages(self):
++        self.pkgman_install("npm")
+diff --git a/python/mozbuild/mozbuild/configure/constants.py b/python/mozbuild/mozbuild/configure/constants.py
+index c71460cb20df..d4cab80e240d 100644
+--- a/python/mozbuild/mozbuild/configure/constants.py
++++ b/python/mozbuild/mozbuild/configure/constants.py
+@@ -20,6 +20,7 @@ OS = EnumString.subclass(
+     "DragonFly",
+     "FreeBSD",
+     "GNU",
++    "Haiku",
+     "NetBSD",
+     "OpenBSD",
+     "OSX",
+@@ -32,6 +33,7 @@ Kernel = EnumString.subclass(
+     "Darwin",
+     "DragonFly",
+     "FreeBSD",
++    "Haiku",
+     "kFreeBSD",
+     "Linux",
+     "NetBSD",
+@@ -108,6 +110,7 @@ kernel_preprocessor_checks = {
+     "Darwin": "__APPLE__",
+     "DragonFly": "__DragonFly__",
+     "FreeBSD": "__FreeBSD__",
++    "Haiku": "__HAIKU__",
+     "kFreeBSD": "__FreeBSD_kernel__",
+     "Linux": "__linux__",
+     "NetBSD": "__NetBSD__",
+diff --git a/testing/mozbase/mozinfo/mozinfo/mozinfo.py b/testing/mozbase/mozinfo/mozinfo/mozinfo.py
+index 77e0f57ac9fc..5a7728dff6fd 100755
+--- a/testing/mozbase/mozinfo/mozinfo/mozinfo.py
++++ b/testing/mozbase/mozinfo/mozinfo/mozinfo.py
+@@ -133,7 +133,7 @@ elif system == "Linux":
+ 
+     info["os"] = "linux"
+     info["linux_distro"] = distribution
+-elif system in ["DragonFly", "FreeBSD", "NetBSD", "OpenBSD"]:
++elif system in ["DragonFly", "FreeBSD", "Haiku", "NetBSD", "OpenBSD"]:
+     info["os"] = "bsd"
+     version = os_version = sys.platform
+ elif system == "Darwin":
+-- 
+2.37.3
+

@@ -1,0 +1,29 @@
+From cd854d64da2e8f8211719f269f89a16888b9af40 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 02:24:53 +0900
+Subject: [PATCH 01/11] Work around Haiku weird venv_root problem
+
+---
+ python/mach/mach/site.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/python/mach/mach/site.py b/python/mach/mach/site.py
+index 7065f600206f..47763d532d71 100644
+--- a/python/mach/mach/site.py
++++ b/python/mach/mach/site.py
+@@ -1184,6 +1184,12 @@ def _create_venv_with_pthfile(
+         ]
+     )
+ 
++    for dir in ("bin", "lib"):
++        src = os.path.join(virtualenv_root, "non-packaged", dir)
++        dst = os.path.join(virtualenv_root, dir)
++        shutil.rmtree(dst, ignore_errors=True)
++        os.symlink(src, dst, target_is_directory=True)
++
+     platlib_site_packages_dir = target_venv.resolve_sysconfig_packages_path("platlib")
+     pthfile_contents = "\n".join(pthfile_lines)
+     with open(os.path.join(platlib_site_packages_dir, PTH_FILENAME), "w") as f:
+-- 
+2.37.3
+

@@ -1,0 +1,38 @@
+From 4ce3a0185566594328dbc050a2519c8ccd5b2745 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 03:41:54 +0900
+Subject: [PATCH 05/11] Add haiku_mozconfig and dont pkg_check_modules libdrm
+ which isn't available on Haiku
+
+- I'm working with wayland build.
+- Haiku doesn't have libdrm.
+---
+ haiku_mozconfig       | 1 +
+ toolkit/moz.configure | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+ create mode 100644 haiku_mozconfig
+
+diff --git a/haiku_mozconfig b/haiku_mozconfig
+new file mode 100644
+index 000000000000..4648dfe6bfdc
+--- /dev/null
++++ b/haiku_mozconfig
+@@ -0,0 +1 @@
++ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index 71373bc39ab7..f8f4cbccd3d7 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -466,7 +466,8 @@ def toolkit_gtk(toolkit):
+ # ==============================================================
+ wayland_headers = pkg_check_modules(
+     "MOZ_WAYLAND",
+-    "gtk+-wayland-3.0 >= 3.14 xkbcommon >= 0.4.1 libdrm >= 2.4",
++    #"gtk+-wayland-3.0 >= 3.14 xkbcommon >= 0.4.1 libdrm >= 2.4",
++    "gtk+-wayland-3.0 >= 3.14 xkbcommon >= 0.4.1",
+     allow_missing=depends(full_toolkit)(lambda t: t == "cairo-gtk3"),
+     when=toolkit_gtk,
+ )
+-- 
+2.37.3
+

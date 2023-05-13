@@ -1,0 +1,37 @@
+From b4e017293030c7965d3d5b2fe9b5d83442ae5a46 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sat, 13 May 2023 04:09:39 +0900
+Subject: [PATCH 07/11] Use haikuported system NSS
+
+- loose NSS version requirement, because only older version has ported.
+---
+ build/moz.configure/nss.configure | 3 ++-
+ haiku_mozconfig                   | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/build/moz.configure/nss.configure b/build/moz.configure/nss.configure
+index 071f76c76eca..95d34c0b1743 100644
+--- a/build/moz.configure/nss.configure
++++ b/build/moz.configure/nss.configure
+@@ -9,7 +9,8 @@ system_lib_option("--with-system-nss", help="Use system NSS")
+ imply_option("--with-system-nspr", True, when="--with-system-nss")
+ 
+ nss_pkg = pkg_check_modules(
+-    "NSS", "nss >= 3.79.2", when="--with-system-nss", config=False
++    #"NSS", "nss >= 3.79.2", when="--with-system-nss", config=False
++    "NSS", "nss >= 3.73.1", when="--with-system-nss", config=False
+ )
+ 
+ set_config("MOZ_SYSTEM_NSS", True, when="--with-system-nss")
+diff --git a/haiku_mozconfig b/haiku_mozconfig
+index 9e6204518bfb..53092f20401c 100644
+--- a/haiku_mozconfig
++++ b/haiku_mozconfig
+@@ -1,3 +1,4 @@
+ ac_add_options --enable-default-toolkit=cairo-gtk3-wayland-only
+ ac_add_options --with-system-nspr
++ac_add_options --with-system-nss
+ ac_add_options --without-wasm-sandboxed-libraries
+-- 
+2.37.3
+
