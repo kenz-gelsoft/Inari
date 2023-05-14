@@ -1,7 +1,7 @@
 From a84eee72d39758aa16859150dc461ae07810a951 Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 03:39:40 +0900
-Subject: [PATCH 04/11] Teach build system how to find libclang on Haiku
+Subject: [PATCH 04/13] Teach build system how to find libclang on Haiku
 
 ---
  build/moz.configure/bindgen.configure | 2 +-

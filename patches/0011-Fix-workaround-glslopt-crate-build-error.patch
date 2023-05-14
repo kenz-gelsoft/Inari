@@ -1,7 +1,7 @@
 From bb013a8f57df206401c28c34db0174ff442864b9 Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 13:43:04 +0900
-Subject: [PATCH 11/11] Fix/workaround glslopt crate build error
+Subject: [PATCH 11/13] Fix/workaround glslopt crate build error
 
 - int64 => int64_
   - int64 conflicts with Haiku definition in SupportDefs.h

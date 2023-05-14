@@ -1,7 +1,7 @@
 From 4ce3a0185566594328dbc050a2519c8ccd5b2745 Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 03:41:54 +0900
-Subject: [PATCH 05/11] Add haiku_mozconfig and dont pkg_check_modules libdrm
+Subject: [PATCH 05/13] Add haiku_mozconfig and dont pkg_check_modules libdrm
  which isn't available on Haiku
 
 - I'm working with wayland build.

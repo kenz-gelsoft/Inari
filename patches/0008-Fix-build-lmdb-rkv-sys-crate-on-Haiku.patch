@@ -1,7 +1,7 @@
 From 00940cf62b14e1303488d522638da61d42fe6eab Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 09:22:28 +0900
-Subject: [PATCH 08/11] Fix build lmdb-rkv-sys crate on Haiku
+Subject: [PATCH 08/13] Fix build lmdb-rkv-sys crate on Haiku
 
 - Haiku also lacks Robust Mutex
 ---

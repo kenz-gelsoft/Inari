@@ -1,0 +1,79 @@
+From 31a16526cc6c595bc4d60b5700e3588225dade5d Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sun, 14 May 2023 13:37:16 +0900
+Subject: [PATCH 12/13] Fix some other compilation errors
+
+---
+ ipc/chromium/src/build/build_config.h  | 4 +++-
+ mozglue/misc/MutexPlatformData_posix.h | 9 ++++++++-
+ mozglue/misc/PlatformMutex.h           | 7 +++++++
+ 3 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/ipc/chromium/src/build/build_config.h b/ipc/chromium/src/build/build_config.h
+index de26701b2d71..6583e49416d6 100644
+--- a/ipc/chromium/src/build/build_config.h
++++ b/ipc/chromium/src/build/build_config.h
+@@ -28,6 +28,8 @@
+ #  define OS_DRAGONFLY 1
+ #elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
+ #  define OS_FREEBSD 1
++#elif defined(__HAIKU__)
++#  define OS_HAIKU 1
+ #elif defined(__NetBSD__)
+ #  define OS_NETBSD 1
+ #elif defined(__OpenBSD__)
+@@ -50,7 +52,7 @@
+ // For access to standard POSIX features, use OS_POSIX instead of a more
+ // specific macro.
+ #if defined(OS_MACOSX) || defined(OS_LINUX) || defined(OS_BSD) || \
+-    defined(OS_SOLARIS)
++    defined(OS_SOLARIS) || defined(OS_HAIKU)
+ #  define OS_POSIX 1
+ #endif
+ 
+diff --git a/mozglue/misc/MutexPlatformData_posix.h b/mozglue/misc/MutexPlatformData_posix.h
+index d1659d8d7bb3..da71d963ccce 100644
+--- a/mozglue/misc/MutexPlatformData_posix.h
++++ b/mozglue/misc/MutexPlatformData_posix.h
+@@ -11,8 +11,15 @@
+ 
+ #include "mozilla/PlatformMutex.h"
+ 
+-struct mozilla::detail::MutexImpl::PlatformData {
++struct
++#ifdef __HAIKU__
++__attribute__((packed))
++#endif
++mozilla::detail::MutexImpl::PlatformData {
+   pthread_mutex_t ptMutex;
++#ifdef __HAIKU__
++  uint32_t padding;
++#endif
+ };
+ 
+ #endif  // MutexPlatformData_posix_h
+diff --git a/mozglue/misc/PlatformMutex.h b/mozglue/misc/PlatformMutex.h
+index ac5459cf1033..d014d11f938d 100644
+--- a/mozglue/misc/PlatformMutex.h
++++ b/mozglue/misc/PlatformMutex.h
+@@ -49,10 +49,17 @@ class MutexImpl {
+   PlatformData* platformData();
+ 
+ #if !defined(XP_WIN) && !defined(__wasi__)
++#  ifdef __HAIKU__
++  void* platformData_[(sizeof(pthread_mutex_t) + sizeof(uint32_t)) / sizeof(void*)];
++  static_assert((sizeof(pthread_mutex_t) + sizeof(uint32_t)) / sizeof(void*) != 0 &&
++                    (sizeof(pthread_mutex_t) + sizeof(uint32_t)) % sizeof(void*) == 0,
++                "pthread_mutex_t must have pointer alignment");
++#  else
+   void* platformData_[sizeof(pthread_mutex_t) / sizeof(void*)];
+   static_assert(sizeof(pthread_mutex_t) / sizeof(void*) != 0 &&
+                     sizeof(pthread_mutex_t) % sizeof(void*) == 0,
+                 "pthread_mutex_t must have pointer alignment");
++#endif
+ #else
+   void* platformData_[6];
+ #endif
+-- 
+2.37.3
+

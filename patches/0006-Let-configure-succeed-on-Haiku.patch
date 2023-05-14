@@ -1,7 +1,7 @@
 From 93884b3378f1d319c5102fd3e7438fc462ffff88 Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 03:55:09 +0900
-Subject: [PATCH 06/11] Let configure succeed on Haiku
+Subject: [PATCH 06/13] Let configure succeed on Haiku
 
 - Disable WASI
 - Use system NSPR

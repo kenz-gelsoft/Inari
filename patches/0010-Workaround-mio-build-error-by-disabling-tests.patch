@@ -1,7 +1,7 @@
 From 5bec2dca0ee9fe69dce9e454b50d54d446367e3b Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 12:03:03 +0900
-Subject: [PATCH 10/11] Workaround mio build error by disabling tests
+Subject: [PATCH 10/13] Workaround mio build error by disabling tests
 
 - mio requires epoll() or kqueue() which is not available on Haiku.
 ---

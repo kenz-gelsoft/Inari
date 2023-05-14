@@ -1,0 +1,26 @@
+From 5582d923e28c1951d12941e091aad6357db94034 Mon Sep 17 00:00:00 2001
+From: KENZ <KENZ.gelsoft@gmail.com>
+Date: Sun, 14 May 2023 13:39:55 +0900
+Subject: [PATCH 13/13] Get binary path from MOZ_ANDROID_LIBDIR
+
+- until we write Haiku specific implementation
+---
+ xpcom/build/BinaryPath.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xpcom/build/BinaryPath.h b/xpcom/build/BinaryPath.h
+index cd349ea62f96..1a84ae4dc878 100644
+--- a/xpcom/build/BinaryPath.h
++++ b/xpcom/build/BinaryPath.h
+@@ -133,7 +133,7 @@ class BinaryPath {
+     return rv;
+   }
+ 
+-#elif defined(ANDROID)
++#elif defined(ANDROID) || defined(__HAIKU__)
+   static nsresult Get(char aResult[MAXPATHLEN]) {
+     // On Android, we use the MOZ_ANDROID_LIBDIR variable that is set by the
+     // Java bootstrap code.
+-- 
+2.37.3
+

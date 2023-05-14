@@ -1,7 +1,7 @@
 From cd854d64da2e8f8211719f269f89a16888b9af40 Mon Sep 17 00:00:00 2001
 From: KENZ <KENZ.gelsoft@gmail.com>
 Date: Sat, 13 May 2023 02:24:53 +0900
-Subject: [PATCH 01/11] Work around Haiku weird venv_root problem
+Subject: [PATCH 01/13] Work around Haiku weird venv_root problem
 
 ---
  python/mach/mach/site.py | 6 ++++++
